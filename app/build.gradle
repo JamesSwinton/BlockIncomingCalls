@@ -1,0 +1,43 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdk 30
+
+    defaultConfig {
+        applicationId "com.zebra.jamesswinton.blockingincomingcall"
+        minSdk 23
+        targetSdk 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        enabled true
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = new File("BlockIncomingCallsTest (v" + variant.versionName + ").apk")
+        }
+    }
+}
+
+dependencies {
+    // Google Libs
+    implementation 'com.android.support:support-compat:27.1.1'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+
+}
